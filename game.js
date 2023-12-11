@@ -1,4 +1,7 @@
- 
+//  Create game
+function game(){
+
+
 // Create options
 let options = [];
 options[0] = "rock";
@@ -33,6 +36,9 @@ ifPlayScissors = (playerSelection === "scissors");
 ifPlayRock = (playerSelection === "rock");
 ifPlayPaper = (playerSelection === "paper");
 
+// Create score
+playerScore = 0
+
 // Play round
 function playRound(playerSelection, computerSelection) {
     // If tie:
@@ -66,3 +72,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 console.log(playRound())
+}
+
+// Play game best-of-5
+game()
+game()
+game()
+game()
+game()
