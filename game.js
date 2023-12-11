@@ -1,3 +1,6 @@
+// Create score
+playerScore = 0
+
 //  Create game
 function game(){
 
@@ -24,59 +27,80 @@ function getPlayerChoice () {
 
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice();
-console.log(computerSelection)
-console.log(playerSelection)
+// console.log(computerSelection)
+// console.log(playerSelection)
 
 // Outcomes
-ifTie = (computerSelection === playerSelection)
+ifTie = (computerSelection === playerSelection);
 ifComRock = (computerSelection === "rock");
 IfComPaper = (computerSelection === "paper");
 ifComScissors = (computerSelection === "scissors");
 ifPlayScissors = (playerSelection === "scissors");
 ifPlayRock = (playerSelection === "rock");
 ifPlayPaper = (playerSelection === "paper");
+// console.log(ifTie)
 
-// Create score
-playerScore = 0
 
 // Play round
 function playRound(playerSelection, computerSelection) {
-    // If tie:
     if (ifTie == true) {
-        tie = "Tie! Please try again";
-        return(tie);
-
+        // alert("Tie! Try again!")
+        console.log("Tie! Please try again!")
+        game();
+        // return("Tie! Try again!")
+    } else if (ifTie == false) {
     // If computer chooses rock:
-    } else if (ifComRock == true) {
-            if (ifPlayScissors == true) {
-                return("You lose! Rock breaks scissors!")
-            } else if (ifPlayPaper == true) {
-                return("You win! Paper covers rock!")
-            }
+    if (ifComRock == true) {
+         if (ifPlayScissors == true) {
+            return("You lose! Rock breaks scissors!")
+        } else if (ifPlayPaper == true) {
+            playerScore += 1
+            return("You win! Paper covers rock!")
+        }
 
     // If computer chooses paper:
     } else if (IfComPaper == true) {
-            if (ifPlayScissors == true) {
-                return("You win! Scissors cut paper!")
-            } else if (ifPlayRock) {
-                    return("You lose! Paper covers rock!")
-            }
+        if (ifPlayScissors == true) {
+            playerScore += 1
+            return("You win! Scissors cut paper!")
+        } else if (ifPlayRock) {
+            return("You lose! Paper covers rock!")
+        }
 
     // If computer chooses scissors:
     } else if (ifComScissors == true) {
-            if (ifPlayPaper) {
-                return("You lose! Scissors cut paper!")
-            } else if (ifPlayRock) {
-                return("You win! Rock breaks scissors!")
-            }
-    }
+        if (ifPlayPaper == true) {
+            return("You lose! Scissors cut paper!")
+        } else if (ifPlayRock == true) {
+            playerScore += 1
+            return("You win! Rock breaks scissors!")
+        }
+}
+}
 }
 console.log(playRound())
+// console.log(playerScore)
 }
 
 // Play game best-of-5
+
 game()
 game()
 game()
 game()
 game()
+
+// Create end messages
+winMessage = "Yippee! You won " + playerScore + " out of 5 games! You are the winner!"
+loseMessage = "You only won " + playerScore + " out of 5 games. The computer won."
+
+
+// Announce end messages
+function score() {
+if (playerScore >= 3) {
+    return(winMessage)
+} else {
+    return(loseMessage)
+}
+}
+console.log(score())
